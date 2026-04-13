@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Valley Rising Chiropractic | Hunter Valley NSW{% endblock %}</title>
+  <meta name="description" content="{% block meta_desc %}Valley Rising Chiropractic — serving East Maitland and Lorn, Hunter Valley NSW. Book your $29 new patient consultation today.{% endblock %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="/static/images/logo-black.jpg" alt="Valley Rising Chiropractic">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/conditions">What We Treat</a></li>
+    <li><a href="/team">Our Team</a></li>
+    <li><a href="/new-patient">New Patient Offer</a></li>
+    <li><a href="/contact">Locations</a></li>
+    <li class="nav-cta"><a href="/book" class="btn btn-primary">Book Now</a></li>
+  </ul>
+  <div class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-logo">
+      <img src="/static/images/logo-black.jpg" alt="Valley Rising Chiropractic">
+      <p>The fastest growing chiropractic practice in the Hunter Valley. Serving East Maitland &amp; Lorn since 2018.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/conditions">What We Treat</a></li>
+        <li><a href="/team">Our Team</a></li>
+        <li><a href="/new-patient">$29 New Patient Offer</a></li>
+        <li><a href="/contact">Locations &amp; Contact</a></li>
+        <li><a href="/book">Book Online</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>East Maitland</h4>
+      <p>6/24 Garnett Road<br>East Maitland NSW 2323<br>(next to Ted's Bike Shop)</p>
+      <p><a href="tel:0249335134">02 4933 5134</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Lorn</h4>
+      <p>17 Belmore Road<br>Lorn NSW 2320</p>
+      <p><a href="tel:0249369235">02 4936 9235</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Valley Wolves Pty Ltd. All rights reserved.</span>
+    <span><a href="/privacy">Privacy Policy</a></span>
+  </div>
+</footer>
+
+<script src="/static/js/main.js"></script>
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>

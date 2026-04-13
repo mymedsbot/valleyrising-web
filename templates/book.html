@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Book an Appointment | Valley Rising Chiropractic{% endblock %}
+{% block meta_desc %}Book online with Valley Rising Chiropractic — East Maitland and Lorn, Hunter Valley NSW. New patients welcome. $29 initial consultation available.{% endblock %}
+
+{% block content %}
+
+<div class="book-hero">
+  <div class="section-label">Online Booking</div>
+  <h1>Book Your Appointment</h1>
+  <p>Select your preferred location and a time that suits you. New patients — don't forget our $29 offer!</p>
+  <div style="margin: 24px auto 0; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; padding-bottom: 32px;">
+    <a href="/new-patient" class="btn btn-secondary">Claim $29 New Patient Offer</a>
+  </div>
+</div>
+
+<!-- Cliniko Booking Widget -->
+<div style="background: var(--white); padding: 0;">
+  <iframe
+    src="https://valley-rising-chiropractic.au1.cliniko.com/bookings"
+    class="cliniko-frame"
+    title="Book an appointment with Valley Rising Chiropractic"
+    allow="payment">
+  </iframe>
+</div>
+
+<!-- Location quick-links -->
+<div class="book-locations">
+  <div class="book-location-card">
+    <h3>East Maitland</h3>
+    <p>6/24 Garnett Road, East Maitland NSW 2323<br>(next to Ted's Bike Shop)</p>
+    <a href="tel:0249335134" class="btn btn-primary" style="display:block; text-align:center;">📞 02 4933 5134</a>
+  </div>
+  <div class="book-location-card">
+    <h3>Lorn</h3>
+    <p>17 Belmore Road, Lorn NSW 2320</p>
+    <a href="tel:0249369235" class="btn btn-primary" style="display:block; text-align:center;">📞 02 4936 9235</a>
+  </div>
+</div>
+
+{% endblock %}
