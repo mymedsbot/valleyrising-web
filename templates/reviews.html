@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Google Reviews | Valley Rising Chiropractic{% endblock %}
+{% block meta_desc %}Read genuine Google reviews from Valley Rising Chiropractic patients across our East Maitland and Lorn locations. 4.8★ across 170+ reviews.{% endblock %}
+
+{% block content %}
+
+<div class="page-hero">
+  <div class="section-label">Patient Reviews</div>
+  <h1>What our patients say</h1>
+  <p>All reviews are pulled directly from Google — we can't edit or remove them.</p>
+  <div class="reviews-aggregate hero-aggregate">
+    {% for loc, data in places.items() %}
+      {% if data.rating %}
+      <div class="agg-badge large">
+        <span class="agg-stars">★ {{ data.rating }}</span>
+        <span class="agg-info">{{ data.review_count }} Google reviews · {{ loc }}</span>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% for location_name, data in places.items() %}
+<section style="padding: 60px 5% {% if not loop.first %}0{% endif %};">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:36px; flex-wrap:wrap;">
+      <h2 style="margin:0;">{{ location_name }}</h2>
+      {% if data.rating %}
+      <div class="agg-badge">
+        <span class="agg-stars">★ {{ data.rating }}</span>
+        <span class="agg-info">{{ data.review_count }} reviews</span>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if data.reviews %}
+    <div class="reviews-full-grid">
+      {% for review in data.reviews %}
+      <div class="review-card">
+        <div class="review-stars">{% for i in range(review.rating) %}★{% endfor %}</div>
+        <p class="review-text">"{{ review.text }}"</p>
+        <div class="review-footer">
+          {% if review.photo %}
+          <img src="{{ review.photo }}" alt="{{ review.author }}" class="reviewer-photo">
+          {% endif %}
+          <div>
+            <div class="review-author">{{ review.author }}</div>
+            <div class="review-location">{{ review.relative }}</div>
+          </div>
+          <img src="https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png" alt="Google" class="google-badge" title="Verified Google Review">
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p style="color:var(--grey);">No reviews loaded — please try again shortly.</p>
+    {% endif %}
+  </div>
+</section>
+{% endfor %}
+
+<!-- Leave a review CTA -->
+<section style="background: var(--off-white); padding: 64px 5%; text-align: center; border-top: 1px solid var(--border); margin-top: 60px;">
+  <h2 style="margin-bottom: 16px;">Had a great experience?</h2>
+  <p style="color: var(--grey); max-width: 480px; margin: 0 auto 32px;">Leave us a Google review — it takes two minutes and helps other people find the care they need.</p>
+  <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+    <a href="https://share.google/whyYrTh3OkCm0XbHM" target="_blank" rel="noopener" class="btn btn-primary">Review East Maitland on Google</a>
+    <a href="https://share.google/CEEkeX87GmR9j5ibV" target="_blank" rel="noopener" class="btn btn-secondary">Review Lorn on Google</a>
+  </div>
+</section>
+
+{% endblock %}

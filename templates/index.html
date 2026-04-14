@@ -128,33 +128,43 @@
     <div>
       <div class="section-label">Patient Reviews</div>
       <h2 class="section-title">What our patients say</h2>
+      <div class="reviews-aggregate">
+        {% for loc, data in places.items() %}
+          {% if data.rating %}
+          <div class="agg-badge">
+            <span class="agg-stars">★ {{ data.rating }}</span>
+            <span class="agg-info">{{ data.review_count }} reviews · {{ loc }}</span>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
     <div>
-      <a href="https://share.google/whyYrTh3OkCm0XbHM" target="_blank" rel="noopener" class="btn btn-secondary">See All Reviews →</a>
+      <a href="/reviews" class="btn btn-secondary">See All Reviews →</a>
     </div>
   </div>
   <div class="reviews-grid">
+    {% for review in featured_reviews %}
     <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Add your best Google review here. Pick one that's specific and genuine — the more detail the better."</p>
-      <div class="review-author">Patient Name</div>
-      <div class="review-location">East Maitland</div>
+      <div class="review-stars">{% for i in range(review.rating) %}★{% endfor %}</div>
+      <p class="review-text">"{{ review.text }}"</p>
+      <div class="review-footer">
+        {% if review.photo %}
+        <img src="{{ review.photo }}" alt="{{ review.author }}" class="reviewer-photo">
+        {% endif %}
+        <div>
+          <div class="review-author">{{ review.author }}</div>
+          <div class="review-location">{{ review.location }} · {{ review.relative }}</div>
+        </div>
+        <img src="https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png" alt="Google" class="google-badge" title="Verified Google Review">
+      </div>
     </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Add your second best Google review here. Ideally one that mentions a specific condition or result."</p>
-      <div class="review-author">Patient Name</div>
-      <div class="review-location">Lorn</div>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Add your third best Google review here. One that mentions how long they've been coming is great for trust."</p>
-      <div class="review-author">Patient Name</div>
-      <div class="review-location">East Maitland</div>
-    </div>
+    {% else %}
+    <p style="color:var(--grey)">Reviews loading — check back shortly.</p>
+    {% endfor %}
   </div>
   <div class="reviews-cta">
-    <a href="https://share.google/whyYrTh3OkCm0XbHM" target="_blank" rel="noopener" class="btn btn-primary">Read More Reviews on Google</a>
+    <a href="/reviews" class="btn btn-primary">Read All Google Reviews</a>
   </div>
 </section>
 
