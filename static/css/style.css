@@ -603,3 +603,42 @@ footer {
 @media (max-width: 600px) {
   .reviews-full-grid { grid-template-columns: 1fr; }
 }
+
+/* Videos page */
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 36px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.video-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.video-embed {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  background: var(--light);
+}
+.video-embed iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+.video-title {
+  padding: 14px 16px;
+  font-family: var(--font-head);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.4;
+}
+@media (max-width: 600px) {
+  .videos-grid { grid-template-columns: 1fr; }
+}

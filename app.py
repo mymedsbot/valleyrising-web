@@ -115,6 +115,10 @@ def new_patient():
 def contact():
     return render_template('contact.html')
 
+@app.route('/videos')
+def videos():
+    return render_template('videos.html')
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
