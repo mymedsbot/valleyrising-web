@@ -94,6 +94,8 @@ nav {
 
 /* ── Offer Banner ── */
 .offer-banner {
+  position: relative;
+  z-index: 10;
   background: var(--green);
   color: var(--white);
   text-align: center;
@@ -114,17 +116,24 @@ nav {
   align-items: center;
   padding: 80px 5%;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
-.hero::before {
-  content: '';
+.hero-visual {
   position: absolute;
-  right: -100px;
-  top: -100px;
-  width: 600px;
-  height: 600px;
+  right: -120px;
+  top: -50px;
+  width: 520px;
+  height: 520px;
   border-radius: 50%;
-  background: rgba(61,107,79,0.06);
+  box-shadow: 0 12px 60px rgba(0,0,0,0.12);
+  overflow: hidden;
+  z-index: 0;
+}
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 8%;
 }
 .hero-content { max-width: 620px; position: relative; z-index: 1; }
 .hero-eyebrow {
