@@ -203,24 +203,31 @@ section { padding: 80px 5%; }
 .conditions-section { background: var(--white); }
 .conditions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
 }
 .condition-card {
   background: var(--off-white);
   border-radius: 8px;
-  padding: 28px 20px;
+  overflow: hidden;
   text-align: center;
   transition: all 0.2s;
   border: 1px solid var(--border);
+  text-decoration: none;
+  display: block;
 }
 .condition-card:hover {
-  background: var(--green-light);
   border-color: var(--green);
   transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
-.condition-icon { font-size: 2rem; margin-bottom: 12px; }
-.condition-card h3 { font-size: 1rem; color: var(--black); }
+.condition-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+.condition-card h3 { font-size: 1rem; color: var(--black); padding: 16px; margin: 0; }
 
 /* ── About strip ── */
 .about-section {
@@ -503,15 +510,22 @@ footer {
 .condition-full-card {
   background: var(--off-white);
   border-radius: 10px;
-  padding: 32px;
+  overflow: hidden;
   border: 1px solid var(--border);
   transition: all 0.2s;
 }
 .condition-full-card:hover {
   border-color: var(--green);
-  background: var(--green-light);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
 }
-.condition-full-card .icon { font-size: 2.2rem; margin-bottom: 14px; }
+.condition-full-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.condition-full-card .card-body { padding: 28px; }
 .condition-full-card h3 { margin-bottom: 10px; }
 .condition-full-card p { font-size: 0.93rem; }
 
