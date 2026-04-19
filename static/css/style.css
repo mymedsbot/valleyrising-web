@@ -549,6 +549,13 @@ footer {
   .contact-grid { grid-template-columns: 1fr; }
   .trust-bar { gap: 32px; }
   .hero { padding: 60px 5%; }
+  .hero-content {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 12px;
+    padding: 28px;
+  }
   .offer-price { font-size: 3.5rem; }
 }
 
