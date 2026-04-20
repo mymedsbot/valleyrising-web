@@ -1,7 +1,9 @@
-from flask import Flask, render_template, send_from_directory, jsonify
+from flask import Flask, render_template, send_from_directory, jsonify, request, redirect, url_for
 import os
 import requests
 import time
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 app = Flask(__name__)
 
@@ -111,9 +113,44 @@ def new_patient():
     return render_template('new-patient.html')
 
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    return render_template('contact.html')
+    if request.method == 'POST':
+        name    = request.form.get('name', '').strip()
+        email   = request.form.get('email', '').strip()
+        phone   = request.form.get('phone', '').strip()
+        message = request.form.get('message', '').strip()
+
+        if name and email and message:
+            try:
+                phone_line = f'<p><strong>Phone:</strong> {phone}</p>' if phone else ''
+                html_body = f"""
+                <h2>New enquiry from valleyrising.com</h2>
+                <p><strong>Name:</strong> {name}</p>
+                <p><strong>Email:</strong> <a href="mailto:{email}">{email}</a></p>
+                {phone_line}
+                <p><strong>Message:</strong></p>
+                <p style="white-space:pre-wrap;">{message}</p>
+                """
+                sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY', ''))
+                mail = Mail(
+                    from_email='noreply@valleyrising.com',
+                    to_emails='frontdesk@valleyrising.com',
+                    subject=f'Website Enquiry — {name}',
+                    html_content=html_body,
+                )
+                mail.reply_to = email
+                sg.send(mail)
+                return redirect(url_for('contact') + '?sent=1')
+            except Exception as e:
+                app.logger.error(f'Contact form error: {e}')
+                return redirect(url_for('contact') + '?error=1')
+        else:
+            return redirect(url_for('contact') + '?error=missing')
+
+    sent  = request.args.get('sent')
+    error = request.args.get('error')
+    return render_template('contact.html', sent=sent, error=error)
 
 @app.route('/videos')
 def videos():
