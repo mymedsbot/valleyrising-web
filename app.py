@@ -134,7 +134,7 @@ def contact():
                 """
                 sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY', ''))
                 mail = Mail(
-                    from_email='noreply@valleyrising.com',
+                    from_email='greg@valleyrising.com',
                     to_emails='frontdesk@valleyrising.com',
                     subject=f'Website Enquiry — {name}',
                     html_content=html_body,
